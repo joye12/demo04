@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-for指令</title>
+</head>
+<!--v-for指令使用-->
+
+<body>
+    <div id="app">
+        <input type="button" value="跑行程" @click="addOthers">
+        <input type="button" value="今日移除" @click="remove">
+        <ul>
+            <li v-for="(item) in arr">
+                Super Junior:{{ item }}
+            </li>
+        </ul>
+        <h2 v-for="(member) in others" :title="member.name">
+            {{ member.name }}
+        </h2>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+    <script>
+       var app = new Vue({
+           el:"#app",
+           data:{
+               arr:["朴正洙","金希澈","金钟云","申东熙"],
+               others:[
+                   {name:"李赫宰"},
+                   {name:"李东海"},
+                   {name:"崔始源"}
+               ]
+           },
+           methods:{
+               addOthers:function (){
+                   <!--加在下面-->
+                   this.others.push({name:"金厉旭"},{name:"曺圭贤"});
+               },
+               remove:function (){
+                   <!--shift函数从上往下移除-->
+                   this.others.shift();
+               }
+           }
+       })
+    </script>
+</body>
+</html>

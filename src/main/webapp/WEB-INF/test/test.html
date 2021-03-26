@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+  <body>
+    <div id="app">
+        {{message+'!!'}}
+        <h2>zy{{ school.name }} {{ school.mobile }}</h2>
+        <ul>
+            <li>{{ campus[0] }}</li>
+            <li>{{ campus[1] }}</li>
+        </ul>
+        <p v-html="content"></p>
+        <input typr="button" value="事件绑定" @click="doIt">
+        <h2 @click="changeMessage">{{ message }}</h2>
+    </div>
+    <!--导入vue.js-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: 'Hello Vue!',
+                content:"<a href='http://www.baidu.com'>中国</a>",
+                school:{
+                    name:'joye',
+                    mobile:'15286172941'
+                },
+                campus:['成都','贵阳']
+            },
+            methods:{
+                doIt:function(){
+                    alert("做It")
+                },
+                changeMessage:function(){
+                   // console.log(this.message);
+                    this.message+="你好！"
+                }
+            }
+    })
+    </script>
+  </body>
+</html>
+
+
+
+

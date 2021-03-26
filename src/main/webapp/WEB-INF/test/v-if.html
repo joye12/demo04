@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-if指令</title>
+</head>
+<body>
+    <!--v-if指令操作-->
+    <div id="app">
+        <input type="button" value="显示数据" @click="reIsshow">
+        <input type="button" value="加热" @click="addTemp">
+        <p v-if="isShow">joye</p>
+        <h2 v-if="temp>40">狗狗太热了~U•ェ•*U</h2>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+    <script>
+        var app =new Vue({
+            el:"#app",
+            data:{
+                isShow:false,
+                temp:35
+            },
+            methods:{
+                reIsshow:function (){
+                    this.isShow = !this.isShow;
+                },
+                addTemp:function(){
+                    this.temp++;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>切换图片</title>
+</head>
+
+<!--点击切换图片-->
+<!--图片数组，使用索引-->
+<!--属性绑定v-bind 事件绑定v-on
+1. 定义图片数组 在data中 imgArr:[]
+2. 添加图片索引 index:0
+3. v-bind 绑定src属性 数组[索引]
+4. 图片切换逻辑 methods中 prev next v-on绑定 即@
+5. 显示状态切换 v-show
+-->
+<body>
+    <div id="app">
+        <!--图片标题-->
+        <h2 class="title">
+            Super Junior~
+        </h2>
+        <!--图片-->
+        <img :src="imgArr[index]" alt="">
+        <!--左箭头-->
+        <a href="javascript:void(0)" v-show="index!=0" @click="prev"  class="left">
+            <img src="./img/prev.jpeg" alt="">
+        </a>
+        <!--右箭头-->
+        <a href="javascipt:void(0)" v-show="index<imgArr.length-1" @click="next" class="right">
+            <img src="./img/next.jpeg" alt="">
+        </a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                imgArr:[
+                    "./img/东海.jpg",
+                    "./img/云云.jpg",
+                    "./img/厉旭.jpg",
+                    "./img/圭圭.jpg",
+                    "./img/小童.jpg",
+                    "./img/小马.jpg",
+                    "./img/澈儿.jpg",
+                    "./img/特儿.jpg",
+                    "./img/赫宰.jpg",
+                    "./img/狗狗.jpg",
+                ],
+                index:0
+            },
+            methods:{
+                prev:function (){
+                    this.index--;
+                },
+                next:function (){
+                    this.index++;
+                }
+        }
+        })
+    </script>
+</body>
+</html>

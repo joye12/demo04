@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>记事本</title>
+</head>
+
+<body>
+    <!--主体区域-->
+    <section id="todoapp">
+        <!--输入框-->
+        <header class="header">
+            <h1>joye-Remember</h1>
+            <input type="text"  placeholder="请输入" v-model="message"
+            @keyup.enter="save">
+        </header>
+        <ul>
+            <li v-for="(item,index) in list">
+                <span>{{ index+1 }}.</span>
+                <label>{{ item }}</label>
+                <button @click="remove(index)"></button>
+            </li>
+        </ul>
+
+       <span v-if="list.length!=0">
+           <strong>{{ list.length }}</strong>items left
+       </span>
+        <button @click="clear" v-show="list.length!=0">
+            clear
+        </button>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el:"#todoapp",
+            data:{
+                list:["春","夏","秋"],
+                message:"joye"
+            },
+            methods:{
+                save:function (){
+                    <!--新增数据-->
+                    this.list.push(this.message);
+                },
+                remove:function (index){
+                    alert("删除成功");
+                    <!--splice函数删除当前index索引的值，一次删一个-->
+                    this.list.splice(index,1);
+                },
+                clear:function (){
+                    alert("清空完成！");
+                    <!--数组为空，即清空数组-->
+                    this.list = [];
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>

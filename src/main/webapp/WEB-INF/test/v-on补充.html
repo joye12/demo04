@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on补充</title>
+</head>
+<!--v-on补充-->
+<body>
+    <div id="app">
+        <!--传递自定义参数-->
+        <input type="button" value="点击" @click="doIt(666,'高铁')">
+        <!--keyup无论做什么操作都会反应，事件修饰符.enter表示只有回车才会触发sayHi方法-->
+        <input type="text" @keyup.enter="sayHi">
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+    <script>
+        var app =new Vue({
+            el:"#app",
+            data:{
+
+            },
+            methods:{
+                doIt:function (p1,p2){
+                    console.log("joye");
+                    console.log(p1);
+                    console.log(p2)
+                },
+                sayHi:function (){
+                    alert("吃了吗？");
+                }
+            }
+        })
+    </script>
+</body>
+</html>
